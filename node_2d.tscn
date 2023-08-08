@@ -1,0 +1,199 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwe1hqepveh8t"]
+
+[ext_resource type="Script" path="res://scripts/tec.gd" id="1_cdnr1"]
+[ext_resource type="Texture2D" uid="uid://dahvjevosebst" path="res://sprites/vaca.webp" id="2_otehd"]
+
+[sub_resource type="Animation" id="Animation_j40od"]
+resource_name = "spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Image:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, 0.0, -0.174533, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q8h0e"]
+_data = {
+"spin": SubResource("Animation_j40od")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hj36"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+bg_color = Color(0.513726, 0.435294, 0.933333, 1)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bifqo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uw1io"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_88udr"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_cdnr1")
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.870588, 0.262745, 0.52549, 1)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="GameContainer" type="Control" parent="Container"]
+layout_mode = 1
+anchor_left = 0.133333
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="CurrentWordField" type="Label" parent="Container/GameContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -17.5
+offset_top = 12.0
+offset_right = 17.5
+offset_bottom = 34.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "VACA"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="WordStatus" type="RichTextLabel" parent="Container/GameContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.5
+offset_right = 64.5
+offset_bottom = 17.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 0
+bbcode_enabled = true
+text = "[wave amp=20.0 freq=10.0 connected=1]palavra com imagem![/wave]"
+fit_content = true
+scroll_active = false
+
+[node name="Control" type="Control" parent="Container/GameContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Container/GameContainer/Control"]
+autoplay = "spin"
+libraries = {
+"": SubResource("AnimationLibrary_q8h0e")
+}
+
+[node name="Image" type="Sprite2D" parent="Container/GameContainer/Control/AnimationPlayer"]
+unique_name_in_owner = true
+position = Vector2(272, 128)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_otehd")
+
+[node name="ItemList" type="ItemList" parent="Container"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 64.0
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hovered_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_styles/panel = SubResource("StyleBoxFlat_1hj36")
+theme_override_styles/hovered = SubResource("StyleBoxFlat_bifqo")
+allow_search = false
+
+[node name="LineEdit" type="LineEdit" parent="Container"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -54.0
+offset_right = 64.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 0)
+theme_override_colors/selection_color = Color(0, 0, 0, 0.341176)
+theme_override_colors/clear_button_color = Color(0, 0, 0, 1)
+theme_override_colors/clear_button_color_pressed = Color(0, 0, 0, 1)
+theme_override_constants/minimum_character_width = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/caret_width = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uw1io")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_88udr")
+placeholder_text = "_ _ _ _"
+alignment = 1
+max_length = 4
+expand_to_text_length = true
+context_menu_enabled = false
+selecting_enabled = false
+flat = true
+
+[node name="TextField" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = 343.0
+offset_top = 140.0
+offset_right = 446.0
+offset_bottom = 186.0
+scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 191.0
+offset_top = 214.0
+offset_right = 296.0
+offset_bottom = 265.0
+
+[connection signal="item_clicked" from="Container/ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="text_submitted" from="Container/LineEdit" to="." method="_on_line_edit_text_submitted"]
