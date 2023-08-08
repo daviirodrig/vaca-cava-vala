@@ -312,6 +312,7 @@ const words: Array = [
 	"doar",
 	"xale",
 	"voto",
+	"vote",
 	"laço",
 	"fixo",
 	"bela",
@@ -1034,11 +1035,20 @@ const words: Array = [
 	"pegá",
 	"cano",
 	"abro",
+	"sreo",
+	"anal",
+	"abri",
+	"acho",
+	"acne",
+	"amei",
+	"anos",
+	"anda",
+	"cala"
 ]
 
 const has_picture = ["sapo", "vaca", "alan", "sreo", "joia", "meia"]
 const shines = ["sreo"]
 
-var current_word: String = "sapo"
+var current_word: String = "vaca"
 
 var matched_words := []

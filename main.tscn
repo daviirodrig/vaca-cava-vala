@@ -61,7 +61,7 @@ metadata/_edit_lock_ = true
 
 [node name="GameContainer" type="Control" parent="Container"]
 layout_mode = 1
-anchor_left = 0.133333
+anchor_left = 0.166667
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -75,10 +75,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -17.5
-offset_top = 12.0
-offset_right = 17.5
-offset_bottom = 34.0
+offset_left = -21.5
+offset_top = 15.0
+offset_right = 21.5
+offset_bottom = 41.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -95,8 +95,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -64.5
+offset_top = 1.0
 offset_right = 64.5
-offset_bottom = 17.0
+offset_bottom = 18.0
 grow_horizontal = 2
 theme_override_font_sizes/normal_font_size = 12
 theme_override_font_sizes/bold_font_size = 0
@@ -105,25 +106,15 @@ text = "[wave amp=20.0 freq=10.0 connected=1]palavra com imagem![/wave]"
 fit_content = true
 scroll_active = false
 
-[node name="Control" type="Control" parent="Container/GameContainer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Container/GameContainer/Control"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Container/GameContainer"]
 autoplay = "spin"
 libraries = {
 "": SubResource("AnimationLibrary_q8h0e")
 }
 
-[node name="Image" type="Sprite2D" parent="Container/GameContainer/Control/AnimationPlayer"]
+[node name="Image" type="Sprite2D" parent="Container/GameContainer/AnimationPlayer"]
 unique_name_in_owner = true
-position = Vector2(272, 128)
+position = Vector2(280, 128)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_otehd")
 
@@ -132,7 +123,7 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 64.0
+offset_right = 80.0
 grow_vertical = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -143,6 +134,7 @@ theme_override_constants/outline_size = 5
 theme_override_styles/panel = SubResource("StyleBoxFlat_1hj36")
 theme_override_styles/hovered = SubResource("StyleBoxFlat_bifqo")
 allow_search = false
+metadata/_edit_lock_ = true
 
 [node name="LineEdit" type="LineEdit" parent="Container"]
 layout_mode = 1
@@ -151,13 +143,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = 8.0
 offset_top = -54.0
-offset_right = 64.0
+offset_right = 72.0
 offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
@@ -182,18 +176,12 @@ flat = true
 
 [node name="TextField" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 343.0
 offset_top = 140.0
 offset_right = 446.0
 offset_bottom = 186.0
 scroll_active = false
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-visible = false
-offset_left = 191.0
-offset_top = 214.0
-offset_right = 296.0
-offset_bottom = 265.0
 
 [connection signal="item_clicked" from="Container/ItemList" to="." method="_on_item_list_item_clicked"]
 [connection signal="text_submitted" from="Container/LineEdit" to="." method="_on_line_edit_text_submitted"]
