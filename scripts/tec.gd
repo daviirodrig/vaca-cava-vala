@@ -98,7 +98,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		new_valid_word(new_text)
 	else:
 		var tween = create_tween()
-		var old_pos : Vector2 = Vector2(240, 216)
+		var old_pos : Vector2 = Vector2(248, 216)
 		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property($Container/LineEdit, "modulate", Color.RED, 0.01)
 		tween.tween_property($Container/LineEdit, "position", Vector2($Container/LineEdit.position["x"]-3, $Container/LineEdit.position["y"]), 0.05)
@@ -116,7 +116,7 @@ func new_valid_word(word: String) -> void:
 		Consts.matched_words.append(word.to_lower())
 		var ind = %ItemList.add_item(word.to_upper(), null, false)
 		%ItemList.set_item_tooltip_enabled(ind, false)
-	
+
 	show_word_with_picture(word)
 	print("New WORD! ", Consts.current_word)
 
