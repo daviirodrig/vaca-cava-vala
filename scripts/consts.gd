@@ -249,7 +249,7 @@ const words: Array = [
 	"sobe",
 	"raiz",
 	"juiz",
-	"Davi",
+	"davi",
 	"apta",
 	"está",
 	"leve",
@@ -460,7 +460,7 @@ const words: Array = [
 	"Éden",
 	"roca",
 	"rasa",
-	"anjo",
+	"anjo",  # aq
 	"raça",
 	"ruço",
 	"nova",
@@ -1043,12 +1043,49 @@ const words: Array = [
 	"amei",
 	"anos",
 	"anda",
-	"cala"
+	"cala",
+	"saca",
+	"neon",
+	"maca",
+	"xota",
+	"pica",
+	"rica",
+	"rose",
+	"jaré",
+	"tome",
+	"gola",
 ]
 
-const has_picture = ["sapo", "vaca", "alan", "sreo", "joia", "meia"]
-const shines = ["sreo"]
+const has_picture = [
+	"moto",
+	"casa",
+	"café",
+	"anel",
+	"pena",
+	"maçã",
+	"água",
+	"gato",
+	"fogo",
+	"pneu",
+	"leão",
+	"sapo",
+	"vaca",
+	"alan",
+	"sreo",
+	"joia",
+	"meia",
+	"vela",
+	"jaré",
+	"rola",
+	"vovô",
+	"rato",
+	"ouro",
+	"cama",
+	"cocô"
+]
+const shines = ["sreo", "jaré"]
 
 var current_word: String = "vaca"
 
 var matched_words := []
+const debug = true
