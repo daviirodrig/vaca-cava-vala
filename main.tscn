@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cwe1hqepveh8t"]
 
 [ext_resource type="Script" path="res://scripts/tec.gd" id="1_cdnr1"]
-[ext_resource type="Texture2D" uid="uid://dahvjevosebst" path="res://sprites/vaca.webp" id="2_otehd"]
+[ext_resource type="Script" path="res://WordInput.gd" id="3_81wib"]
 
 [sub_resource type="Animation" id="Animation_j40od"]
 resource_name = "spin"
@@ -30,6 +30,8 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_88udr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hj36"]
+content_margin_left = 5.0
+content_margin_right = 5.0
 bg_color = Color(0.513726, 0.435294, 0.933333, 1)
 border_width_right = 2
 border_blend = true
@@ -38,11 +40,15 @@ shadow_size = 1
 [node name="Main" type="Node2D"]
 script = ExtResource("1_cdnr1")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(240, 136)
+metadata/_edit_lock_ = true
+
 [node name="Container" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 480.0
-offset_bottom = 270.0
+offset_bottom = 272.0
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Container"]
@@ -81,10 +87,10 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "VACA"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+metadata/_edit_use_anchors_ = true
 
 [node name="WordStatus" type="RichTextLabel" parent="Container/GameContainer"]
 unique_name_in_owner = true
@@ -104,6 +110,7 @@ bbcode_enabled = true
 text = "[wave amp=20.0 freq=10.0 connected=1]palavra com imagem![/wave]"
 fit_content = true
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Container/GameContainer"]
 autoplay = "spin"
@@ -115,7 +122,6 @@ libraries = {
 unique_name_in_owner = true
 position = Vector2(280, 128)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_otehd")
 
 [node name="WordInput" type="LineEdit" parent="Container/GameContainer"]
 unique_name_in_owner = true
@@ -154,6 +160,7 @@ expand_to_text_length = true
 context_menu_enabled = false
 selecting_enabled = false
 flat = true
+script = ExtResource("3_81wib")
 
 [node name="ItemList" type="ItemList" parent="Container"]
 unique_name_in_owner = true
@@ -180,5 +187,6 @@ offset_right = 446.0
 offset_bottom = 186.0
 scroll_active = false
 
-[connection signal="text_submitted" from="Container/GameContainer/WordInput" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_submitted" from="Container/GameContainer/WordInput" to="Container/GameContainer/WordInput" method="_on_text_submitted"]
+[connection signal="valid_word" from="Container/GameContainer/WordInput" to="." method="_on_word_input_valid_word"]
 [connection signal="item_clicked" from="Container/ItemList" to="." method="_on_item_list_item_clicked"]

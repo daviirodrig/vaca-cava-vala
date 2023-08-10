@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5wteeyifq1e4"]
+
+[ext_resource type="Script" path="res://scripts/WordList.gd" id="1_lcidi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbe81"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.113725, 0.113725, 0.172549, 1)
+shadow_size = 1
+
+[node name="WordListScene" type="Node2D"]
+
+[node name="WordListContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lcidi")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="WordListContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.113725, 0.113725, 0.172549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="WordListContainer"]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 272.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="MatchedList" type="ItemList" parent="WordListContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_styles/panel = SubResource("StyleBoxFlat_tbe81")
+allow_search = false
+max_columns = 4
+fixed_column_width = 100
+metadata/_edit_lock_ = true
