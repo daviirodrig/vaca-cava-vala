@@ -60,9 +60,9 @@ func _on_text_submitted(new_text: String) -> void:
 		#new_valid_word(new_text)
 	else:
 		var tween = create_tween()
-		var old_pos: Vector2 = Vector2(168, 226)
+		var old_pos: Vector2 = Vector2(440, 600)
 		tween.set_ease(Tween.EASE_IN_OUT)
-		play_audio("res://audios/wrong.mp3")
+		play_audio("res://audios/wrong.mp3", 1.0, 0.8, -8)
 		tween.tween_property(%WordInput, "modulate", Color.RED, 0.01)
 		tween.tween_property(
 			%WordInput,
@@ -83,9 +83,9 @@ func _on_text_submitted(new_text: String) -> void:
 		#tween.tween_property(textLabel, "scale", Vector2(1,1), 1)
 		#tween.tween_callback($Sprite.queue_free)
 
-func play_audio(audio_file: String, rangemax = 1.0, rangemin = 0.8):
+func play_audio(audio_file: String, rangemax = 1.0, rangemin = 0.8, volume: float=0):
 	var audioPlayer := AudioStreamPlayer.new()
-	#audioPlayer.bus = load("res://default_bus_layout.tres")
+	audioPlayer.volume_db = volume
 	var stream = load(audio_file)
 	randomize()
 	var random_pitch = randf_range(rangemin, rangemax)

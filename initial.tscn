@@ -8,8 +8,8 @@ script = ExtResource("1_lpmem")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 480.0
-offset_bottom = 272.0
+offset_right = 1280.0
+offset_bottom = 720.0
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 layout_mode = 1
@@ -19,33 +19,83 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.870588, 0.262745, 0.52549, 1)
+metadata/_edit_lock_ = true
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Popup" type="PopupPanel" parent="Control"]
+title = "Como Jogar"
+initial_position = 1
+size = Vector2i(400, 400)
+unresizable = false
+borderless = false
+min_size = Vector2i(400, 400)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Popup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 396.0
+offset_bottom = 396.0
+theme_override_font_sizes/normal_font_size = 35
+theme_override_font_sizes/bold_font_size = 2
+theme_override_font_sizes/italics_font_size = 2
+theme_override_font_sizes/bold_italics_font_size = 2
+theme_override_font_sizes/mono_font_size = 2
+bbcode_enabled = true
+text = "Neste jogo você precisa encontrar novas palavras a partir de uma anterior, mudando apenas uma letra ou a ordem das letras atuais, por exemplo:
+> [color=green]VACA -> CAVA[/color]
+> [color=green]VACA -> VALA[/color]
+> [color=red]VACA -> CARA[/color]
+
+O objetivo final é encontrar todas as palavras que contêm imagem.
+Pressione TAB dentro do jogo para ver as imagens já encontradas.
+
+Palavras [rainbow]shiny[/rainbow] são palavras que não estão no dicionário mas eu quis colocar, por isso elas são mais difíceis."
+
+[node name="ButtonStart" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -86.0
-offset_top = -30.0
-offset_right = 86.0
-offset_bottom = 30.0
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 151.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 50
 text = "Iniciar"
 
-[node name="Button2" type="Button" parent="Control"]
+[node name="ButtonHowToPlay" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 60.0
+offset_right = 100.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Como Jogar"
+
+[node name="ButtonReset" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -61.0
-offset_right = -5.0
-offset_bottom = -5.0
+offset_left = -296.0
+offset_top = -104.0
+offset_right = -17.0
+offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Reset progress"
+theme_override_font_sizes/font_size = 30
+text = "Resetar progresso"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control"]

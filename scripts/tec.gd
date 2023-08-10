@@ -34,35 +34,17 @@ func _input(event):
 		return
 	if not (event.as_text_key_label() in Consts.permited_chars):
 		return
-	var current: String = %TextField.text
-	var text = current
-
-	if event.keycode == KEY_BACKSPACE:
-		text = current.erase(current.length() - 1)
+	elif event.keycode == KEY_ESCAPE:
+		get_tree().change_scene_to_file("res://initial.tscn")
 	elif event.keycode == KEY_TAB:
-#		var tween = create_tween()
-#		tween.set_ease(Tween.EASE_IN_OUT)
-#		tween.set_trans(Tween.TRANS_BOUNCE)
-#		var game_pos = Vector2(240, 136)
-#		var words_pos = Vector2(-240, 136)
-#		if $Camera2D.position == game_pos:
-#			tween.tween_property($Camera2D, "position", words_pos, 0.05)
-#		else:
-#			tween.tween_property($Camera2D, "position", game_pos, 0.05)
 		get_tree().change_scene_to_file("res://WordListScene.tscn")
 		print("Current Matched Words: ", Consts.matched_words)
-	else:
-		if current.length() < 4:
-			var key = event.as_text_key_label()
-			text = current + key
-
-	%TextField.set_text("%s" % text)
 	#print(is_valid_word(current_word, text))
 
 func _on_word_input_valid_word(word: String) -> void:
 	if not word in Consts.matched_words:
 		if not word in Consts.has_picture:
-			play_audio("res://audios/new.mp3", 0.8, 1.2)
+			play_audio("res://audios/new.mp3", 0.8, 1.2, 2)
 		var ind = %ItemList.add_item(word.to_upper(), null, false)
 		%ItemList.set_item_tooltip_enabled(ind, false)
 
@@ -90,7 +72,7 @@ func show_word_with_picture(word: String):
 		#tween.stop()
 		tween.set_ease(Tween.EASE_OUT)
 		tween.set_trans(Tween.TRANS_BOUNCE)
-		tween.tween_property(%Image, "scale", Vector2(0.2, 0.2), 0.5)
+		tween.tween_property(%Image, "scale", Vector2(0.7, 0.7), 0.5)
 		if word.to_lower() in Consts.shines:
 			var glow_shader = load("res://shaders/rainbow.gdshader")
 			%Image.material = ShaderMaterial.new()
@@ -118,8 +100,9 @@ func show_word_with_picture(word: String):
 	%CurrentWordField.set_text(Consts.current_word)
 
 
-func play_audio(audio_file: String, rangemax = 1.0, rangemin = 0.8):
+func play_audio(audio_file: String, rangemax = 1.0, rangemin = 0.8, volume: float=0):
 	var audioPlayer := AudioStreamPlayer.new()
+	audioPlayer.volume_db = volume
 	#audioPlayer.bus = load("res://default_bus_layout.tres")
 	var stream = load(audio_file)
 	randomize()

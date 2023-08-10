@@ -30,15 +30,15 @@ settings/stdout/print_fps=true
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=272
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 
 [gui]
 
 theme/custom_font="res://fonts/ShantellSans-Regular.ttf"
+theme/default_font_multichannel_signed_distance_field=true
+theme/default_font_generate_mipmaps=true
 
 [rendering]
 
