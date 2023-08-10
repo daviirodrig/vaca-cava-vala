@@ -2,6 +2,7 @@ extends LineEdit
 
 signal valid_word(word: String)
 
+
 func is_valid_word(current: String, check: String) -> bool:
 	current = current.to_lower()
 	check = check.to_lower()
@@ -83,7 +84,8 @@ func _on_text_submitted(new_text: String) -> void:
 		#tween.tween_property(textLabel, "scale", Vector2(1,1), 1)
 		#tween.tween_callback($Sprite.queue_free)
 
-func play_audio(audio_file: String, rangemax = 1.0, rangemin = 0.8, volume: float=0):
+
+func play_audio(audio_file: String, rangemax = 1.0, rangemin = 0.8, volume: float = 0):
 	var audioPlayer := AudioStreamPlayer.new()
 	audioPlayer.volume_db = volume
 	var stream = load(audio_file)

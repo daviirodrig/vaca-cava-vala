@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cwe1hqepveh8t"]
 
 [ext_resource type="Script" path="res://scripts/tec.gd" id="1_cdnr1"]
-[ext_resource type="Script" path="res://WordInput.gd" id="3_81wib"]
+[ext_resource type="Script" path="res://scripts/WordInput.gd" id="3_81wib"]
 
 [sub_resource type="Animation" id="Animation_j40od"]
 resource_name = "spin"

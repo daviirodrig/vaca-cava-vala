@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5wteeyifq1e4"]
+[gd_scene load_steps=4 format=3 uid="uid://b5wteeyifq1e4"]
 
 [ext_resource type="Script" path="res://scripts/WordList.gd" id="1_lcidi"]
+
+[sub_resource type="Theme" id="Theme_p8k6l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbe81"]
 content_margin_left = 5.0
@@ -46,6 +48,7 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 1
+theme = SubResource("Theme_p8k6l")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -87,4 +90,4 @@ offset_bottom = -16.0
 grow_vertical = 0
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "Imagens encontradas: 0/23"
+text = "Imagens encontradas: 0/00"

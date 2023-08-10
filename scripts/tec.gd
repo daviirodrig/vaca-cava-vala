@@ -15,6 +15,7 @@ func _ready() -> void:
 	print("current: ", Consts.current_word)
 	%WordInput.grab_focus()
 
+
 func setup() -> void:
 	%WordStatus.visible = false
 	for w in Consts.matched_words:
@@ -40,6 +41,7 @@ func _input(event):
 		get_tree().change_scene_to_file("res://WordListScene.tscn")
 		print("Current Matched Words: ", Consts.matched_words)
 	#print(is_valid_word(current_word, text))
+
 
 func _on_word_input_valid_word(word: String) -> void:
 	if not word in Consts.matched_words:
@@ -100,7 +102,7 @@ func show_word_with_picture(word: String):
 	%CurrentWordField.set_text(Consts.current_word)
 
 
-func play_audio(audio_file: String, rangemax = 1.0, rangemin = 0.8, volume: float=0):
+func play_audio(audio_file: String, rangemax = 1.0, rangemin = 0.8, volume: float = 0):
 	var audioPlayer := AudioStreamPlayer.new()
 	audioPlayer.volume_db = volume
 	#audioPlayer.bus = load("res://default_bus_layout.tres")

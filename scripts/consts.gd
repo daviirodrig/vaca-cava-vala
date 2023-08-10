@@ -649,7 +649,7 @@ const words: Array = [
 	"saná",
 	"titã",
 	"lama",
-	"pato",# aq
+	"pato",  # aq
 	"etc.",
 	"pôde",
 	"silo",
@@ -1094,12 +1094,14 @@ var current_word: String = initial_word
 var matched_words := []
 const debug = true
 
+
 func save_game():
 	var file = FileAccess.open("user://file_data.json", FileAccess.WRITE)
 	var data_dict = {"current_word": Consts.current_word, "matched_words": Consts.matched_words}
 	var words_data = JSON.stringify(data_dict)
 	file.store_line(words_data)
 	file.close()
+
 
 func load_save():
 	if not FileAccess.file_exists("user://file_data.json"):
@@ -1109,6 +1111,7 @@ func load_save():
 	var words_data = JSON.parse_string(file.get_as_text())
 	Consts.matched_words = words_data.get("matched_words")
 	Consts.current_word = words_data.get("current_word")
+
 
 func reset_progress() -> void:
 	Consts.matched_words = []
