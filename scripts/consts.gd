@@ -1083,7 +1083,22 @@ const has_picture = [
 	"rato",
 	"ouro",
 	"cama",
-	"cocô"
+	"cocô",
+	"acre",
+	"anjo",
+	"arma",
+	"açaí",
+	"bala",
+	"boné",
+	"cova",
+	"erva",
+	"gelo",
+	"lago",
+	"mago",
+	"onda",
+	"pato",
+	"robô",
+	"sopa"
 ]
 const shines = ["sreo", "jaré", "alan"]
 

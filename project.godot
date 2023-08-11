@@ -36,7 +36,7 @@ window/stretch/mode="canvas_items"
 
 [gui]
 
-theme/custom_font="res://fonts/ShantellSans-Regular.ttf"
+theme/custom_font="res://fonts/m5x7.ttf"
 theme/default_font_multichannel_signed_distance_field=true
 theme/default_font_generate_mipmaps=true
 

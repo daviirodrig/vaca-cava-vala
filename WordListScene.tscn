@@ -1,15 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5wteeyifq1e4"]
+[gd_scene load_steps=2 format=3 uid="uid://b5wteeyifq1e4"]
 
 [ext_resource type="Script" path="res://scripts/WordList.gd" id="1_lcidi"]
-
-[sub_resource type="Theme" id="Theme_p8k6l"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbe81"]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_bottom = 10.0
-bg_color = Color(0.113725, 0.113725, 0.172549, 1)
-shadow_size = 1
 
 [node name="WordListScene" type="Node2D"]
 
@@ -34,30 +25,17 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.113725, 0.113725, 0.172549, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="WordListContainer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_bottom = 50
-
-[node name="MatchedList" type="ItemList" parent="WordListContainer/MarginContainer"]
-unique_name_in_owner = true
+[node name="ScrollContainer" type="ScrollContainer" parent="WordListContainer"]
 layout_mode = 2
-focus_mode = 0
-mouse_filter = 1
-theme = SubResource("Theme_p8k6l")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
-theme_override_styles/panel = SubResource("StyleBoxFlat_tbe81")
-allow_search = false
-max_columns = 4
-fixed_column_width = 280
+offset_right = 1280.0
+offset_bottom = 664.0
+
+[node name="VBox" type="VBoxContainer" parent="WordListContainer/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1250, 700)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
 [node name="ShinyCounter" type="RichTextLabel" parent="WordListContainer"]
 unique_name_in_owner = true
@@ -68,9 +46,8 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -384.0
-offset_top = -64.0
+offset_top = -48.0
 offset_right = -12.0
-offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/normal_font_size = 30
@@ -83,11 +60,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 30.0
-offset_top = -64.0
-offset_right = 448.0
-offset_bottom = -16.0
+offset_left = 32.0
+offset_top = -48.0
+offset_right = 514.0
 grow_vertical = 0
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "Imagens encontradas: 0/00"
+text = "Imagens encontradas: 300/300"
