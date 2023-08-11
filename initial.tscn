@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3rqr5b2n8xb1"]
+[gd_scene load_steps=3 format=3 uid="uid://b3rqr5b2n8xb1"]
 
 [ext_resource type="Script" path="res://scripts/initial.gd" id="1_lpmem"]
+[ext_resource type="Texture2D" uid="uid://buflburyshcbx" path="res://logo.webp" id="2_io7la"]
 
 [node name="InitialScene" type="Node2D"]
 script = ExtResource("1_lpmem")
@@ -49,35 +50,40 @@ Pressione TAB dentro do jogo para ver as imagens já encontradas.
 
 Palavras [rainbow]shiny[/rainbow] são palavras que não estão no dicionário mas eu quis colocar, por isso elas são mais difíceis."
 
+[node name="Logo" type="Sprite2D" parent="Control"]
+position = Vector2(640, 336)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_io7la")
+
 [node name="ButtonStart" type="Button" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -50.0
-offset_right = 151.0
-offset_bottom = 50.0
+anchor_bottom = 1.0
+offset_left = -150.5
+offset_top = -230.0
+offset_right = 150.5
+offset_bottom = -130.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "Iniciar"
 
 [node name="ButtonHowToPlay" type="Button" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 60.0
-offset_right = 100.0
-offset_bottom = 160.0
+anchor_bottom = 1.0
+offset_left = -150.5
+offset_top = -116.0
+offset_right = 150.5
+offset_bottom = -16.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "Como Jogar"
 
@@ -98,3 +104,19 @@ theme_override_font_sizes/font_size = 30
 text = "Resetar progresso"
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control"]
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_top = 30.0
+offset_right = 68.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 90
+text = "VACA CAVA VALA"
