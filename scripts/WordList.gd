@@ -5,13 +5,12 @@ var shinyCount = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
 	words_builder()
 
 	%ImageCounter.text = "Imagens encontradas: {a}/{b}".format(
 		{"a": len(Consts.matched_words), "b": len(Consts.has_picture)}
 	)
-	%ShinyCounter.text = "[rainbow]Shiny encontrados: {a}/{b}[/rainbow]".format(
+	%ShinyCounter.text = "Shiny encontrados: {a}/{b}".format(
 		{"a": shinyCount, "b": len(Consts.shines)}
 	)
 
@@ -19,9 +18,10 @@ func _ready() -> void:
 func word_node(text: String, color: Color = Color.WHITE) -> Label:
 	var w = Label.new()
 	w.text = text
-	w.add_theme_font_size_override("font_size", 50)
+	w.add_theme_font_size_override("font_size", 67)
+	w.add_theme_font_override("font", load("res://fonts/GnuUnifontFull-Pm9P.ttf"))
 	w.add_theme_color_override("font_color", color)
-	return w	
+	return w
 
 
 func words_builder() -> void:
@@ -35,19 +35,23 @@ func words_builder() -> void:
 				shinyCount += 1
 			nodes.append(word_node(w.to_upper()))
 		else:
-			nodes.append(word_node("????"))
+			if w.to_lower() in Consts.revealed_words:
+				nodes.append(word_node(w.to_upper(), Color.DIM_GRAY))
+			else:
+				nodes.append(word_node("????"))
 
 	var hbox: HBoxContainer = null
 
 	for n in nodes:
-		if (hbox == null):
+		if hbox == null:
 			hbox = HBoxContainer.new()
 			hbox.add_theme_constant_override("separation", 50)
-		if len(hbox.get_children()) >= 5:
+		if len(hbox.get_children()) >= 7:
 			%VBox.add_child(hbox)
 			hbox = HBoxContainer.new()
 			hbox.add_theme_constant_override("separation", 50)
 		hbox.add_child(n)
+	%VBox.add_child(hbox)
 
 
 func _input(event):

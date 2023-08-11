@@ -1108,11 +1108,11 @@ var current_word: String = initial_word
 
 var matched_words := []
 const debug = true
-
+var revealed_words := []
 
 func save_game():
 	var file = FileAccess.open("user://file_data.json", FileAccess.WRITE)
-	var data_dict = {"current_word": Consts.current_word, "matched_words": Consts.matched_words}
+	var data_dict = {"current_word": Consts.current_word, "matched_words": Consts.matched_words, "revealed_words": Consts.revealed_words}
 	var words_data = JSON.stringify(data_dict)
 	file.store_line(words_data)
 	file.close()
@@ -1124,6 +1124,7 @@ func load_save():
 		return
 	var file = FileAccess.open("user://file_data.json", FileAccess.READ)
 	var words_data = JSON.parse_string(file.get_as_text())
+	Consts.revealed_words = words_data.get("revealed_words")
 	Consts.matched_words = words_data.get("matched_words")
 	Consts.current_word = words_data.get("current_word")
 
@@ -1132,4 +1133,14 @@ func reset_progress() -> void:
 	Consts.matched_words = []
 	Consts.matched_words.append(Consts.initial_word)
 	Consts.current_word = Consts.initial_word
+	Consts.revealed_words = []
+	Consts.revealed_words.append(new_revealed_word())
+	Consts.revealed_words.append(new_revealed_word())
 	Consts.save_game()
+
+func new_revealed_word() -> String:
+	randomize()
+	var w = Consts.has_picture.pick_random().to_lower()
+	while (w in Consts.matched_words) || (w in Consts.revealed_words) || (w in Consts.shines):
+		w = Consts.has_picture.pick_random().to_lower()
+	return w

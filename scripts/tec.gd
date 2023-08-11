@@ -65,6 +65,9 @@ func show_word_with_picture(word: String):
 	if word.to_lower() in Consts.has_picture:
 		if not word.to_lower() in Consts.matched_words:
 			Consts.matched_words.append(word.to_lower())
+			if word.to_lower() in Consts.revealed_words:
+				Consts.revealed_words.erase(word.to_lower())
+				Consts.revealed_words.append(Consts.new_revealed_word())
 			Consts.save_game()
 			play_audio("res://audios/image.mp3", 1, 1)
 		var texture = load("res://sprites/%s.webp" % word.to_lower().to_lower())
