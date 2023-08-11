@@ -17,4 +17,4 @@ Sinais dicráticos são ignorados na verificação, mas você ainda precisa digi
 O objetivo final é encontrar todas as palavras que contêm imagem.
 Pressione TAB dentro do jogo para ver as imagens já encontradas.
 
-Palavras [rainbow]shiny[/rainbow] são palavras que não estão no dicionário mas eu quis colocar, por isso elas são mais difíceis.
+Palavras shiny são palavras que não estão no dicionário mas eu quis colocar, por isso elas são mais difíceis.
