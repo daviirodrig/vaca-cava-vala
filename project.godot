@@ -13,6 +13,8 @@ config_version=5
 config/name="palavrinhas"
 run/main_scene="res://initial.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
+boot_splash/bg_color=Color(0.870588, 0.262745, 0.52549, 1)
+boot_splash/show_image=false
 config/icon="res://sprites/vaca.webp"
 config/windows_native_icon="res://icon.ico"
 

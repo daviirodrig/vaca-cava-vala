@@ -25,9 +25,9 @@ _data = {
 "spin": SubResource("Animation_j40od")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uw1io"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ej446"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_88udr"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vbeph"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hj36"]
 content_margin_left = 5.0
@@ -132,21 +132,27 @@ offset_bottom = 667.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
 theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/caret_color = Color(0, 0, 0, 0)
+theme_override_colors/caret_color = Color(0, 0, 0, 0.584314)
 theme_override_colors/selection_color = Color(0, 0, 0, 0.341176)
 theme_override_colors/clear_button_color = Color(0, 0, 0, 1)
 theme_override_colors/clear_button_color_pressed = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_constants/caret_width = 0
+theme_override_constants/caret_width = 1
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxEmpty_uw1io")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_88udr")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ej446")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vbeph")
 placeholder_text = "_ _ _ _"
 alignment = 1
 max_length = 4
@@ -173,6 +179,7 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/panel = SubResource("StyleBoxFlat_1hj36")
 allow_search = false
 
+[connection signal="focus_exited" from="Container/GameContainer/WordInput" to="Container/GameContainer/WordInput" method="_on_focus_exited"]
 [connection signal="text_submitted" from="Container/GameContainer/WordInput" to="Container/GameContainer/WordInput" method="_on_text_submitted"]
 [connection signal="valid_word" from="Container/GameContainer/WordInput" to="." method="_on_word_input_valid_word"]
 [connection signal="item_clicked" from="Container/ItemList" to="." method="_on_item_list_item_clicked"]

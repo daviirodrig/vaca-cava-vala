@@ -31,7 +31,8 @@ const permited_chars = [
 	"Backspace",
 	"Enter",
 	"Tab",
-	"Escape"
+	"Escape",
+	"Up"
 ]
 
 func words():
@@ -2220,6 +2221,7 @@ var current_word: String = initial_word
 var matched_words := []
 const debug = false
 var revealed_words := []
+var screen_list := []
 
 
 func save_game():
@@ -2227,7 +2229,8 @@ func save_game():
 	var data_dict = {
 		"current_word": Consts.current_word,
 		"matched_words": Consts.matched_words,
-		"revealed_words": Consts.revealed_words
+		"revealed_words": Consts.revealed_words,
+		"screen_list": Consts.screen_list
 	}
 	var words_data = JSON.stringify(data_dict)
 	file.store_line(words_data)
@@ -2240,6 +2243,7 @@ func load_save():
 		return
 	var file = FileAccess.open("user://file_data.json", FileAccess.READ)
 	var words_data = JSON.parse_string(file.get_as_text())
+	Consts.screen_list = words_data.get("screen_list")
 	Consts.revealed_words = words_data.get("revealed_words")
 	Consts.matched_words = words_data.get("matched_words")
 	Consts.current_word = words_data.get("current_word")
@@ -2249,6 +2253,8 @@ func reset_progress() -> void:
 	Consts.matched_words = []
 	Consts.matched_words.append(Consts.initial_word)
 	Consts.current_word = Consts.initial_word
+	Consts.screen_list = []
+	Consts.screen_list.append(Consts.initial_word)
 	Consts.revealed_words = []
 	var w1 = new_revealed_word()
 	var w2 = new_revealed_word()

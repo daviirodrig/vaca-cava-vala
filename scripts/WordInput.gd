@@ -96,3 +96,7 @@ func play_audio(audio_file: String, rangemax = 1.0, rangemin = 0.8, volume: floa
 	audioPlayer.finished.connect(func(): audioPlayer.queue_free())
 	add_child(audioPlayer)
 	audioPlayer.play()
+
+
+func _on_focus_exited() -> void:
+	self.grab_focus()

@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func setup() -> void:
 	%WordStatus.visible = false
-	for w in Consts.matched_words:
+	for w in Consts.screen_list:
 		var ind = %ItemList.add_item(w.to_upper(), null, false)
 		%ItemList.set_item_tooltip_enabled(ind, false)
 	show_word_with_picture(Consts.current_word)
@@ -40,24 +40,49 @@ func _input(event):
 	elif event.keycode == KEY_TAB:
 		get_tree().change_scene_to_file("res://WordListScene.tscn")
 		print("Current Matched Words: ", Consts.matched_words)
+	elif event.keycode == KEY_UP:
+		print("column ", %WordInput.caret_column)
+		print("len ", len(%WordInput.text)-1)
+		%WordInput.caret_column = len(%WordInput.text)-1
+		print("new_column ", %WordInput.caret_column)
+		var index = Consts.screen_list.size()-2
+		if not index < 0:
+			word_up(index)
+			%WordInput.grab_focus()
 	#print(is_valid_word(current_word, text))
 
 
 func _on_word_input_valid_word(word: String) -> void:
-	if not word in Consts.matched_words:
-		if not word in Consts.has_picture:
-			play_audio("res://audios/new.mp3", 0.8, 1.2, 2)
-		var ind = %ItemList.add_item(word.to_upper(), null, false)
-		%ItemList.set_item_tooltip_enabled(ind, false)
+	Consts.screen_list.append(word.to_lower())
+	var ind = %ItemList.add_item(word.to_upper(), null, false)
+	%ItemList.set_item_tooltip_enabled(ind, false)
+	var b = %ItemList.get_v_scroll_bar()
+	b.allow_greater = true
+	b.value = b.max_value - 650
+	if not word in Consts.has_picture:
+		play_audio("res://audios/new.mp3", 0.8, 1.2, 2)
 
 	show_word_with_picture(word)
 	print("New WORD! ", Consts.current_word)
 
+func word_up(index: int):
+	var to_remove = Consts.screen_list.size() - (index+1)
+	if to_remove < 0:
+		to_remove = 0
+	for i in range(to_remove):
+		var index_remove = Consts.screen_list.size()-1
+		var text_remove = %ItemList.get_item_text(index_remove).to_lower()
+		Consts.screen_list.erase(text_remove)
+		%ItemList.remove_item(index_remove)
+		Consts.save_game()
+	%WordInput.grab_focus()
+	show_word_with_picture(%ItemList.get_item_text(index))
 
 func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
-	if mouse_button_index == 1:
-		%WordInput.grab_focus()
-		show_word_with_picture(%ItemList.get_item_text(index))
+	if mouse_button_index != 1:
+		return
+	word_up(index)
+	%WordInput.grab_focus()
 
 
 func show_word_with_picture(word: String):
