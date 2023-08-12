@@ -14,7 +14,7 @@ func is_valid_word(current: String, check: String) -> bool:
 
 	print("Input: current = ", current, " check = ", check)
 
-	if current_with_accents == check_with_accents || (not Consts.words.has(check_with_accents)):
+	if current_with_accents == check_with_accents || (not Consts.words().has(check_with_accents)):
 		print("Current and check are the same word OR CHECK word does not exist")
 		return false
 	if Consts.debug:

@@ -1,14 +1,14 @@
 extends Control
 
 var shinyCount = 0
+var pictureCount = 0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	words_builder()
-
 	%ImageCounter.text = "Imagens encontradas: {a}/{b}".format(
-		{"a": len(Consts.matched_words), "b": len(Consts.has_picture)}
+		{"a": pictureCount, "b": len(Consts.has_picture)}
 	)
 	%ShinyCounter.text = "Shiny encontrados: {a}/{b}".format(
 		{"a": shinyCount, "b": len(Consts.shines)}
@@ -33,6 +33,7 @@ func words_builder() -> void:
 		if w.to_lower() in Consts.matched_words:
 			if w.to_lower() in Consts.shines:
 				shinyCount += 1
+			pictureCount += 1
 			nodes.append(word_node(w.to_upper()))
 		else:
 			if w.to_lower() in Consts.revealed_words:
