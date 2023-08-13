@@ -18,3 +18,10 @@ O objetivo final é encontrar todas as palavras que contêm imagem.
 Pressione TAB dentro do jogo para ver as imagens já encontradas.
 
 Palavras shiny são palavras que não estão no dicionário mas eu quis colocar, por isso elas são mais difíceis.
+
+# Download
+
+[Windows](https://github.com/daviirodrig/vaca-cava-vala/releases/download/v1.0/vacacavavala.exe)
+
+[Linux](https://github.com/daviirodrig/vaca-cava-vala/releases/download/v1.0/vacacavavala.linux.x86_64)
+
