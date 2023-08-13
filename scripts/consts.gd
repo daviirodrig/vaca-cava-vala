@@ -2219,9 +2219,17 @@ var initial_word: String = "vaca"
 var current_word: String = initial_word
 
 var matched_words := []
-const debug = false
+const debug = true
 var revealed_words := []
 var screen_list := []
+
+var _on_keydown_callback = JavaScriptBridge.create_callback(_on_tab)
+
+func _on_tab(e):
+	if get_tree().current_scene.to_string().contains("Main"):
+		get_tree().change_scene_to_file("res://WordListScene.tscn")
+	else:
+		get_tree().change_scene_to_file("res://main.tscn")
 
 
 func save_game():
@@ -2281,7 +2289,11 @@ func new_revealed_word():
 		var random_item = available_items.pick_random()
 		return random_item
 	else:
-		return Consts.shines.pick_random()
+		var shines_available = Consts.shines.filter(func(i): return i in Consts.matched_words)
+		if available_items.size() > 0:
+			return shines_available.pick_random()
+		else:
+			return null
 	# var w = Consts.has_picture.pick_random().to_lower()
 	# var only_shiny_remaining = abs(len(Consts.matched_words)-len(Consts.has_picture)) <= len(Consts.shines)
 	# if only_shiny_remaining:

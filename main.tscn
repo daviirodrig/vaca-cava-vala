@@ -132,12 +132,6 @@ offset_bottom = 667.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-focus_next = NodePath(".")
-focus_previous = NodePath(".")
 mouse_filter = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
@@ -179,7 +173,6 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/panel = SubResource("StyleBoxFlat_1hj36")
 allow_search = false
 
-[connection signal="focus_exited" from="Container/GameContainer/WordInput" to="Container/GameContainer/WordInput" method="_on_focus_exited"]
 [connection signal="text_submitted" from="Container/GameContainer/WordInput" to="Container/GameContainer/WordInput" method="_on_text_submitted"]
 [connection signal="valid_word" from="Container/GameContainer/WordInput" to="." method="_on_word_input_valid_word"]
 [connection signal="item_clicked" from="Container/ItemList" to="." method="_on_item_list_item_clicked"]

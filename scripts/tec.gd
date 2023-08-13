@@ -13,7 +13,8 @@ func _ready() -> void:
 #	Consts.load_save()
 	setup()
 	print("current: ", Consts.current_word)
-	%WordInput.grab_focus()
+	if not OS.has_feature("web"):
+		%WordInput.grab_focus()
 
 
 func setup() -> void:

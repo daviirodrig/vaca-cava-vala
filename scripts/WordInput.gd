@@ -2,6 +2,9 @@ extends LineEdit
 
 signal valid_word(word: String)
 
+func _ready() -> void:
+	_web_input()
+
 
 func is_valid_word(current: String, check: String) -> bool:
 	current = current.to_lower()
@@ -97,6 +100,95 @@ func play_audio(audio_file: String, rangemax = 1.0, rangemin = 0.8, volume: floa
 	add_child(audioPlayer)
 	audioPlayer.play()
 
+var _on_key_callback = JavaScriptBridge.create_callback(_on_key)
+var _on_focus_callback = JavaScriptBridge.create_callback(_on_focus)
+var _on_submit_callback = JavaScriptBridge.create_callback(_on_submit)
 
-func _on_focus_exited() -> void:
-	self.grab_focus()
+func _on_submit():
+	print('aqui')
+	_on_text_submitted(_get_text())
+	print('passo')
+	#emit_signal("text_submitted", _get_text())
+
+	
+func _on_focus(e):
+	pass
+#	parent.grab_click_focus.call_deferred()
+
+func _on_key(e):
+	self.text = _get_text()
+	self.caret_column = self.text.length() - 1
+
+func _get_text():
+	return JavaScriptBridge.eval("hiddenInput.value", true)
+
+
+func _web_input():
+	if not OS.has_feature('web'):
+		return
+	
+	self.focus_mode = Control.FOCUS_NONE
+	
+	JavaScriptBridge.eval("""
+		var hiddenInput = document.getElementById('wordInput') || document.createElement('input');
+		hiddenInput.type = 'text';
+		hiddenInput.id = 'wordInput';
+		hiddenInput.maxLength = 4
+		hiddenInput.style.position = 'absolute';
+		//hiddenInput.style.opacity = 0.0001;
+		//hiddenInput.style.display = 'none';
+		document.body.appendChild(hiddenInput);
+		hiddenInput.onblur = ()=>{hiddenInput.focus()}
+		hiddenInput.focus();
+		hiddenInput.onkeydown = (e) => {
+			if(e.key == 'Tab'){
+			e.preventDefault();
+			hiddenInput.callKeyDown();
+			}
+			else if(e.key == 'Enter'){
+			e.preventDefault();
+			console.log('Enter');
+			hiddenInput.callEnter();
+			}
+		}
+	""", true)
+	
+#	JavaScriptBridge.get_interface("document").querySelector('body').addEventListener('keyup', _js_wordlist)
+#
+#	JavaScriptBridge.eval("""
+#	document.querySelector('body').addEventListener('keyup', (e)=>{
+#		if (e.keycode == 9) {
+#			//call godot
+#			console.log("get it here")
+#		}
+#	})
+#
+#	""", true)
+	
+	var hiddenInput = JavaScriptBridge.get_interface("hiddenInput")
+	hiddenInput.oninput = _on_key_callback
+	hiddenInput.callEnter = Consts._on_submit_callback
+	hiddenInput.callKeyDown = Consts._on_keydown_callback
+	hiddenInput.onfocus = _on_focus_callback
+	self.item_rect_changed.connect(on_item_rect_changed)
+	#self.focus_entered.connect(func():self.release_focus();JavaScriptBridge.eval("hiddenInput.focus()", true))
+
+func update_input():
+	JavaScriptBridge.eval("""
+			hiddenInput.style.top = '10px';
+			hiddenInput.style.left = '{left}px';
+			hiddenInput.style.height = '{height}px';
+			hiddenInput.style.width = '{width}px';
+		""".format({
+			'top': self.global_position.y,
+			'left': self.global_position.x,
+			'height': self.size.y,
+			'width': self.size.x,
+		}), true)
+
+func on_item_rect_changed():
+	update_input.call_deferred()
+
+
+#func _on_focus_entered() -> void:
+#	JavaScriptBridge.eval('hiddenInput.focus()')
