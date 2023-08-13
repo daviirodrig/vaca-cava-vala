@@ -2281,7 +2281,11 @@ func new_revealed_word():
 		var random_item = available_items.pick_random()
 		return random_item
 	else:
-		return Consts.shines.pick_random()
+		var shines_available = Consts.shines.filter(func(i): return not i in Consts.matched_words)
+		if shines_available.size() > 0:
+			return shines_available.pick_random()
+		else:
+			return null
 	# var w = Consts.has_picture.pick_random().to_lower()
 	# var only_shiny_remaining = abs(len(Consts.matched_words)-len(Consts.has_picture)) <= len(Consts.shines)
 	# if only_shiny_remaining:
