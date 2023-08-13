@@ -21,7 +21,7 @@ Palavras shiny são palavras que não estão no dicionário mas eu quis colocar,
 
 # Download
 
-[Windows](https://github.com/daviirodrig/vaca-cava-vala/releases/download/v1.0/vacacavavala.exe)
+[Windows](https://github.com/daviirodrig/vaca-cava-vala/releases/latest/download/VacaCavaVala.exe)
 
-[Linux](https://github.com/daviirodrig/vaca-cava-vala/releases/download/v1.0/vacacavavala.linux.x86_64)
+[Linux](https://github.com/daviirodrig/vaca-cava-vala/releases/latest/download/VacaCavaVala.x86_64)
 
