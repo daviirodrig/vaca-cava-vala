@@ -2210,7 +2210,10 @@ const has_picture = [
 	"onça",
 	"rubi",
 	"suco",
-	"urso"
+	"urso",
+	"faca",
+	"bolo",
+	"bola",
 ]
 const shines = ["sreo", "jaré", "alan"]
 
