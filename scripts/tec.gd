@@ -1,5 +1,6 @@
 extends Node2D
 
+var words_scene = preload("res://WordListScene.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,7 +39,7 @@ func _input(event):
 	elif event.keycode == KEY_ESCAPE:
 		get_tree().change_scene_to_file("res://initial.tscn")
 	elif event.keycode == KEY_TAB:
-		get_tree().change_scene_to_file("res://WordListScene.tscn")
+		get_tree().change_scene_to_packed(words_scene)
 		#print_debug("Current Matched Words: ", Consts.matched_words)
 	elif event.keycode == KEY_UP:
 		#print_debug("column ", %WordInput.caret_column)

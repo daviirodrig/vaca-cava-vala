@@ -3,10 +3,11 @@ extends Control
 var shinyCount = 0
 var pictureCount = 0
 
+const pixelfont = preload("res://fonts/GnuUnifontFull-Pm9P.ttf")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	words_builder()
+	words_builder.call_deferred()
 	%ImageCounter.text = "Imagens encontradas: {a}/{b}".format(
 		{"a": pictureCount, "b": len(Consts.has_picture)}
 	)
@@ -19,7 +20,7 @@ func word_node(text: String, color: Color = Color.WHITE) -> Label:
 	var w = Label.new()
 	w.text = text
 	w.add_theme_font_size_override("font_size", 67)
-	w.add_theme_font_override("font", load("res://fonts/GnuUnifontFull-Pm9P.ttf"))
+	w.add_theme_font_override("font", pixelfont)
 	w.add_theme_color_override("font_color", color)
 	return w
 
