@@ -12,10 +12,10 @@ func is_valid_word(current: String, check: String) -> bool:
 	check = ts.strip_diacritics(check)
 	current = ts.strip_diacritics(current)
 
-	print("Input: current = ", current, " check = ", check)
+	#print_debug("Input: current = ", current, " check = ", check)
 
 	if current_with_accents == check_with_accents || (not Consts.words().has(check_with_accents)):
-		print("Current and check are the same word OR CHECK word does not exist")
+	#	print_debug("Current and check are the same word OR CHECK word does not exist")
 		return false
 	if Consts.debug:
 		return true
@@ -24,18 +24,18 @@ func is_valid_word(current: String, check: String) -> bool:
 	sorted_current_letters.sort()
 	sorted_check_letters.sort()
 
-	#print("Sorted current letters:", sorted_current_letters)
-	#print("Sorted check letters:", sorted_check_letters)
+	#print_debug("Sorted current letters:", sorted_current_letters)
+	#print_debug("Sorted check letters:", sorted_check_letters)
 
 	if sorted_current_letters == sorted_check_letters:
-		print("Words are alphabetically sorted permutations.")
+	#	print_debug("Words are alphabetically sorted permutations.")
 		return true
 
 	var current_split = Array(current.split())
 	var check_split = Array(check.split())
 
-	#print("current letters:", current_split)
-	#print("check letters:", check_split)
+	#print_debug("current letters:", current_split)
+	#print_debug("check letters:", check_split)
 
 	#var diff = check_split.filter(func(x): return not current_split.has(x))
 	var diff_array := []
@@ -43,14 +43,14 @@ func is_valid_word(current: String, check: String) -> bool:
 		if check_split[i] != current_split[i]:
 			diff_array.append(check_split[i])
 
-	#print("Diff array:", diff_array)
-	#print("Different letters:", diff)
+	#print_debug("Diff array:", diff_array)
+	#print_debug("Different letters:", diff)
 
 	if diff_array.size() <= 1:
-		print("Words have only one or fewer different letters.")
+	#	print_debug("Words have only one or fewer different letters.")
 		return true
 	else:
-		print("Words are not valid.")
+	#	print_debug("Words are not valid.")
 		return false
 
 

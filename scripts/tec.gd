@@ -3,16 +3,16 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-#	print("modo - domo ", is_valid_word("modo", "domo"))
-#	print("vaca - cava ", is_valid_word("vaca", "cava"))
-#	print("modo - amor ", is_valid_word("modo", "amor"))
-#	print("alva - alvo ", is_valid_word("alva", "alvo"))
-#	print("alvo - alva ", is_valid_word("alvo", "alva"))
-#	print("modo - moda ", is_valid_word("modo", "moda"))
-#	print("maca - cara ", is_valid_word("maca", "cara"))
+#	print_debug("modo - domo ", is_valid_word("modo", "domo"))
+#	print_debug("vaca - cava ", is_valid_word("vaca", "cava"))
+#	print_debug("modo - amor ", is_valid_word("modo", "amor"))
+#	print_debug("alva - alvo ", is_valid_word("alva", "alvo"))
+#	print_debug("alvo - alva ", is_valid_word("alvo", "alva"))
+#	print_debug("modo - moda ", is_valid_word("modo", "moda"))
+#	print_debug("maca - cara ", is_valid_word("maca", "cara"))
 #	Consts.load_save()
 	setup()
-	print("current: ", Consts.current_word)
+	#print_debug("current: ", Consts.current_word)
 	%WordInput.grab_focus()
 
 
@@ -39,17 +39,17 @@ func _input(event):
 		get_tree().change_scene_to_file("res://initial.tscn")
 	elif event.keycode == KEY_TAB:
 		get_tree().change_scene_to_file("res://WordListScene.tscn")
-		print("Current Matched Words: ", Consts.matched_words)
+		#print_debug("Current Matched Words: ", Consts.matched_words)
 	elif event.keycode == KEY_UP:
-		print("column ", %WordInput.caret_column)
-		print("len ", len(%WordInput.text)-1)
+		#print_debug("column ", %WordInput.caret_column)
+		#print_debug("len ", len(%WordInput.text)-1)
 		%WordInput.caret_column = len(%WordInput.text)-1
-		print("new_column ", %WordInput.caret_column)
+		#print_debug("new_column ", %WordInput.caret_column)
 		var index = Consts.screen_list.size()-2
 		if not index < 0:
 			word_up(index)
 			%WordInput.grab_focus()
-	#print(is_valid_word(current_word, text))
+	#print_debug(is_valid_word(current_word, text))
 
 
 func _on_word_input_valid_word(word: String) -> void:
@@ -63,7 +63,7 @@ func _on_word_input_valid_word(word: String) -> void:
 		play_audio("res://audios/new.mp3", 0.8, 1.2, 2)
 
 	show_word_with_picture(word)
-	print("New WORD! ", Consts.current_word)
+	#print_debug("New WORD! ", Consts.current_word)
 
 func word_up(index: int):
 	var to_remove = Consts.screen_list.size() - (index+1)
