@@ -39,9 +39,3 @@ window/stretch/mode="viewport"
 [gui]
 
 theme/custom_font="res://fonts/ShantellSans-Regular.ttf"
-theme/default_font_multichannel_signed_distance_field=true
-theme/default_font_generate_mipmaps=true
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0
