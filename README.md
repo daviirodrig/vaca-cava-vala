@@ -19,7 +19,9 @@ Pressione TAB dentro do jogo para ver as imagens já encontradas.
 
 Palavras shiny são palavras que não estão no dicionário mas eu quis colocar, por isso elas são mais difíceis.
 
-# Download
+# Jogar
+
+[Web (itch.io)](https://daviirodrig.itch.io/vaca-cava-vala)
 
 [Windows](https://github.com/daviirodrig/vaca-cava-vala/releases/latest/download/VacaCavaVala.exe)
 
