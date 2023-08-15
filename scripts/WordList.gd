@@ -7,7 +7,7 @@ const pixelfont = preload("res://fonts/GnuUnifontFull-Pm9P.ttf")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	words_builder.call_deferred()
+	words_builder()
 	%ImageCounter.text = "Imagens encontradas: {a}/{b}".format(
 		{"a": pictureCount, "b": len(Consts.has_picture)}
 	)
