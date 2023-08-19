@@ -58,6 +58,7 @@ func _on_text_submitted(new_text: String) -> void:
 	var valid := is_valid_word(Consts.current_word, new_text)
 	if valid == true:
 		emit_signal("valid_word", new_text)
+		self.text = ''
 		#new_valid_word(new_text)
 	else:
 		var tween = create_tween()
