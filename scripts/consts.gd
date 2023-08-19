@@ -2152,6 +2152,7 @@ func words():
 		"íeis",
 		"ímãs",
 		"ítem",
+		"bapo",
 	]
 	var final_words = []
 	for w in words:
@@ -2214,15 +2215,21 @@ const has_picture = [
 	"faca",
 	"bolo",
 	"bola",
+	"boca",
+	"nerd",
+	"bapo",
+	"alho",
+	"cume",
+	"galo",
 ]
-const shines = ["sreo", "jaré", "alan"]
+const shines = ["sreo", "jaré", "alan", "nerd", "bapo"]
 
 var initial_word: String = "vaca"
 
 var current_word: String = initial_word
 
 var matched_words := []
-const debug = false
+const debug = true
 var revealed_words := []
 var screen_list := []
 
