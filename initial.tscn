@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3rqr5b2n8xb1"]
+[gd_scene load_steps=4 format=3 uid="uid://b3rqr5b2n8xb1"]
 
 [ext_resource type="Script" path="res://scripts/initial.gd" id="1_lpmem"]
 [ext_resource type="Texture2D" uid="uid://buflburyshcbx" path="res://logo.webp" id="2_io7la"]
+[ext_resource type="Script" path="res://scripts/ButtonConfig.gd" id="3_pckav"]
 
 [node name="InitialScene" type="Node2D"]
 script = ExtResource("1_lpmem")
@@ -56,16 +57,11 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_io7la")
 
 [node name="ButtonStart" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -150.5
-offset_top = -230.0
-offset_right = 150.5
-offset_bottom = -130.0
+layout_mode = 2
+offset_left = 489.5
+offset_top = 490.0
+offset_right = 790.5
+offset_bottom = 590.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
@@ -87,24 +83,6 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "Como Jogar"
 
-[node name="ButtonReset" type="Button" parent="Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -296.0
-offset_top = -104.0
-offset_right = -17.0
-offset_bottom = -16.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 30
-text = "Resetar progresso"
-
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Control"]
-
 [node name="Title" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
@@ -120,3 +98,64 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 90
 text = "VACA CAVA VALA"
+
+[node name="ButtonConfig" type="Button" parent="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -88.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "⚙"
+script = ExtResource("3_pckav")
+
+[node name="ConfigPopup" type="PopupPanel" parent="Control/ButtonConfig"]
+unique_name_in_owner = true
+position = Vector2i(0, 36)
+size = Vector2i(516, 155)
+unresizable = false
+borderless = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ButtonConfig/ConfigPopup"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 512.0
+offset_bottom = 151.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ButtonConfig/ConfigPopup/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="Control/ButtonConfig/ConfigPopup/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="Control/ButtonConfig/ConfigPopup/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/ButtonConfig/ConfigPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="ButtonReset" type="Button" parent="Control/ButtonConfig/ConfigPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Resetar progresso salvo"
+
+[connection signal="pressed" from="Control/ButtonStart" to="." method="start_game"]
+[connection signal="pressed" from="Control/ButtonHowToPlay" to="." method="show_how_to_play"]
+[connection signal="pressed" from="Control/ButtonConfig" to="Control/ButtonConfig" method="_on_button_config_pressed"]
+[connection signal="value_changed" from="Control/ButtonConfig/ConfigPopup/VBoxContainer/HBoxContainer/VolumeSlider" to="Control/ButtonConfig" method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="Control/ButtonConfig/ConfigPopup/VBoxContainer/ButtonReset" to="Control/ButtonConfig" method="reset"]

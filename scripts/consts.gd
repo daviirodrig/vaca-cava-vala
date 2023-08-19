@@ -2226,6 +2226,8 @@ const debug = false
 var revealed_words := []
 var screen_list := []
 
+var volume: float = 0.1
+var _bus := AudioServer.get_bus_index("Master")
 
 func save_game():
 	var file = FileAccess.open("user://file_data.json", FileAccess.WRITE)
@@ -2233,7 +2235,8 @@ func save_game():
 		"current_word": Consts.current_word,
 		"matched_words": Consts.matched_words,
 		"revealed_words": Consts.revealed_words,
-		"screen_list": Consts.screen_list
+		"screen_list": Consts.screen_list,
+		"volume": Consts.volume,
 	}
 	var words_data = JSON.stringify(data_dict)
 	file.store_line(words_data)
@@ -2250,6 +2253,8 @@ func load_save():
 	Consts.revealed_words = words_data.get("revealed_words")
 	Consts.matched_words = words_data.get("matched_words")
 	Consts.current_word = words_data.get("current_word")
+	Consts.volume = float(words_data.get("volume")) if (words_data.get("volume") != null) else 0.1
+	AudioServer.set_bus_volume_db(_bus, linear_to_db(Consts.volume))
 
 
 func reset_progress() -> void:
