@@ -2229,7 +2229,7 @@ var initial_word: String = "vaca"
 var current_word: String = initial_word
 
 var matched_words := []
-const debug = true
+const debug = false
 var revealed_words := []
 var screen_list := []
 
