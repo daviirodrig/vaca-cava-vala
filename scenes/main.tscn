@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cwe1hqepveh8t"]
 
-[ext_resource type="Script" path="res://scripts/tec.gd" id="1_cdnr1"]
-[ext_resource type="Script" path="res://scripts/WordInput.gd" id="3_81wib"]
+[ext_resource type="Script" path="res://scripts/tec.gd" id="1_sc8el"]
+[ext_resource type="Script" path="res://scripts/WordInput.gd" id="2_2lhds"]
 
 [sub_resource type="Animation" id="Animation_j40od"]
 resource_name = "spin"
@@ -38,7 +38,7 @@ border_blend = true
 shadow_size = 1
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_cdnr1")
+script = ExtResource("1_sc8el")
 
 [node name="Container" type="Control" parent="."]
 layout_mode = 3
@@ -162,7 +162,7 @@ expand_to_text_length = true
 context_menu_enabled = false
 selecting_enabled = false
 flat = true
-script = ExtResource("3_81wib")
+script = ExtResource("2_2lhds")
 metadata/_edit_lock_ = true
 
 [node name="ItemList" type="ItemList" parent="Container"]

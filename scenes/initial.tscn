@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3rqr5b2n8xb1"]
 
-[ext_resource type="Script" path="res://scripts/initial.gd" id="1_lpmem"]
-[ext_resource type="Texture2D" uid="uid://buflburyshcbx" path="res://logo.webp" id="2_io7la"]
-[ext_resource type="Texture2D" uid="uid://bb6sirpf4txem" path="res://sprites/cog.webp" id="3_enemt"]
-[ext_resource type="Script" path="res://scripts/ButtonConfig.gd" id="3_pckav"]
+[ext_resource type="Script" path="res://scripts/initial.gd" id="1_1rjak"]
+[ext_resource type="Texture2D" uid="uid://buflburyshcbx" path="res://logo.webp" id="2_ouvfa"]
+[ext_resource type="Texture2D" uid="uid://bb6sirpf4txem" path="res://sprites/cog.webp" id="3_r583x"]
+[ext_resource type="Script" path="res://scripts/ButtonConfig.gd" id="4_oun8h"]
 
 [node name="InitialScene" type="Node2D"]
-script = ExtResource("1_lpmem")
+script = ExtResource("1_1rjak")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -56,7 +56,7 @@ Palavras [rainbow]shiny[/rainbow] são palavras que não estão no dicionário m
 [node name="Logo" type="Sprite2D" parent="Control"]
 position = Vector2(640, 336)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_io7la")
+texture = ExtResource("2_ouvfa")
 
 [node name="ButtonStart" type="Button" parent="Control"]
 layout_mode = 2
@@ -116,10 +116,10 @@ offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
-icon = ExtResource("3_enemt")
+icon = ExtResource("3_r583x")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("3_pckav")
+script = ExtResource("4_oun8h")
 
 [node name="ConfigPopup" type="PopupPanel" parent="Control/ButtonConfig"]
 unique_name_in_owner = true
