@@ -62,7 +62,7 @@ func _input(event):
 	if not event.is_pressed():
 		return
 	elif event.keycode == KEY_TAB:
-		get_tree().change_scene_to_file("res://main.tscn")
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

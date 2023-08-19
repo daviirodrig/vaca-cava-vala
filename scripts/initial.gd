@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func start_game() -> void:
-	var game_scene: PackedScene = load("res://main.tscn")
+	var game_scene: PackedScene = load("res://scenes/main.tscn")
 	get_tree().change_scene_to_packed(game_scene)
 
 
